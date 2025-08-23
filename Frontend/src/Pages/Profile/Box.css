@@ -1,0 +1,60 @@
+.box {
+  background-color: white;
+  color: #013e38;
+  padding: 10px;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  box-shadow: 3px 3px 8px 5px var(--secondary-bg);
+  width: 100%;
+}
+
+.desc {
+  margin: 0.6rem;
+  margin-top: 1.5rem;
+  font-family: "Roboto";
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.box-head {
+  margin: 0.6rem;
+  font-family: "Roboto";
+  font-size: 1.2rem;
+}
+
+.details {
+  margin: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-size: 1rem ;
+  font-weight: bold;
+  color: grey;
+}
+
+.boxskill-boxes {
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skill-box {
+  text-align: center;
+  background-color: #809c5c;
+  color: white;
+  margin-right: 1rem;
+  border-radius: 5px;
+  min-width: 4rem;
+  font-size: 12px;
+}
+
+
+@media (max-width: 425px) {
+  .details {
+    font-size: 0.8rem;
+  }
+  .box-head {
+  font-size: 1rem;
+}
+
+}

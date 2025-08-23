@@ -1,0 +1,117 @@
+:root {
+  --cyan: #3bb4a1;
+  --light-grey: #6d6e70;
+  --grey: #2d2d2d;
+  --yellow: #fbf1a4;
+  --dark-cyan: #013e38;
+  --red: #f56664;
+  --basefont: "Oswald", sans-serif;
+  --secfont: "Montserrat", sans-serif;
+}
+
+.discoverPage {
+  background-color: white;
+  color: var(--secondary-text);
+  height: calc(100vh - 80px); /* Full viewport height minus navbar height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent the whole page from scrolling */
+}
+
+.contentContainer {
+  display: flex;
+  flex: 1; /* Take up all available vertical space */
+  min-height: 0; /* Fix for flexbox overflow */
+}
+
+.navBar {
+  background-color: var(--primary-bg);
+  width: 20vw;
+  padding: 20px;
+  z-index: 1;
+  box-shadow: 4px 0 8px var(--secondary-bg);
+  /* Height is now controlled by the parent flex container */
+}
+
+.navLink {
+  font-family: var(--secfont);
+  text-decoration: none;
+  padding: 15px 0px 15px 15px;
+  margin: 10px 0;
+  color: var(--teritary-text);
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.navLink:hover,
+.activeLink {
+  background-color: var(--secondary-bg);
+  color: var(--primary-text);
+}
+
+.navIcon {
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.headingContainer {
+  flex: 1;
+  padding: 50px;
+  overflow-y: auto; /* Allow this container to scroll if content overflows */
+}
+
+.profileCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.discoverHeading {
+  font-family: "Roboto", sans-serif;
+  color: var(--teritary-text);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.noUsersMessage {
+  color: var(--yellow);
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .discoverPage {
+    height: auto; /* Allow height to be determined by content on mobile */
+    min-height: calc(100vh - 94px);
+  }
+
+  .navBar {
+    display: none;
+  }
+
+  .contentContainer {
+    margin-left: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .headingContainer {
+    width: 100%;
+    padding: 10px;
+    overflow-y: visible; /* Disable scrolling for the container on mobile */
+  }
+
+  .profileCards {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 425px) {
+  .discoverHeading {
+    font-size: 1.2rem;
+  }
+}

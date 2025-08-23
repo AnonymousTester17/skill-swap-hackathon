@@ -1,0 +1,64 @@
+/* Original style for nav link font */
+.navLinks > .nav-link {
+  font-family: "Roboto", sans-serif;
+  color: var(--secondary-text);
+}
+/*sample*/
+/* --- ✨ Styles for Hover Effects & Layout --- */
+
+/* This is the main container for the entire nav bar's right side */
+.navContainer {
+  gap: 2rem; /* Creates the gap between the main links group and the login/user group */
+}
+
+/* This is the container for ONLY the links that get the underline */
+/* This is the container for ONLY the links that get the underline */
+.navLinks {
+  gap: 1.5rem;
+}
+
+/* 1. Underline Transition for General Nav Links */
+.navLinks > :global(.nav-link) {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.navLinks > :global(.nav-link)::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--main);
+  transition: width 0.3s ease-in-out;
+}
+
+.navLinks > :global(.nav-link):hover::after {
+  width: 100%;
+}
+
+
+/* 2. Scale Transition for Login/Register Link */
+.loginRegisterLink {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+}
+
+.loginRegisterLink:hover {
+  transform: scale(1.1);
+}
+
+.userDropdownMenu {
+  left: auto !important;
+  right: 0 !important;
+  margin-top: 10px !important;
+  box-shadow: 0 4px 8px var(--secondary-bg);
+  border: 2px solid var(--secondary-bg);
+}
+
+.userDropdownMenu :global(.dropdown-item:hover),
+.userDropdownMenu :global(.dropdown-item:active) {
+  background-color: var(--secondary-bg);
+  color: var(--secondary-text);
+}

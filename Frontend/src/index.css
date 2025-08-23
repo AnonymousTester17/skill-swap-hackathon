@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital@0;1&family=Oswald:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cyan: #3bb4a1;
+  --light-grey: #6d6e70;
+  --grey: #2d2d2d;
+  --yellow: #fbf1a4;
+  --dark-cyan: #013e38;
+  --red: #f56664;
+  --basefont: "Oswald", sans-serif;
+  --secfont: "Montserrat", sans-serif;
+
+  
+  --main: oklch(76.9% 0.188 70.08);
+  --primary-bg: oklch(98.7% 0.022 95.277);
+  --secondary-bg: oklch(96.2% 0.059 95.617);
+  --primary-text: oklch(13% 0.028 261.692);
+  --secondary-text: oklch(27.8% 0.033 256.848);
+  --teritary-text: oklch(55.1% 0.027 264.364);
+  --dark-bg: oklch(55.5% 0.163 48.998);
+  --hover-btn: oklch(66.6% 0.179 58.318);
+  --highlighter: oklch(83.7% 0.128 66.29);
+  --badge: oklch(87.2% 0.01 258.338);
+  --badge-text: oklch(55.1% 0.027 264.364)
+}
+
+::-webkit-scrollbar-track {
+  border: 5px solid #00211e;
+  background-color: #00211e;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  background-color: #00211e;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--cyan);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 0;
+  width: 0;
+  display: none;
+}

@@ -1,0 +1,180 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+}
+
+.profileImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.userName {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.userBio {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.skillsContainer {
+    margin: 1rem 0;
+}
+
+.skillsTitle {
+    font-weight: bold;
+}
+
+.skillsList {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.skillItem {
+    background-color: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+}
+
+.requestButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.requestButton:hover {
+    background-color: #0056b3;
+}
+
+.requestModalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.requestModalShow {
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.requestModalShow h2 {
+    margin-top: 0;
+}
+
+.formGroup {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.skillSelect,
+.messageInput {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.messageInput {
+    height: 100px;
+    resize: vertical;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.sendButton,
+.cancelButton {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition:
+        background-color 0.3s,
+        color 0.3s;
+}
+
+.sendButton {
+    background-color: #28a745;
+    color: white;
+}
+
+.sendButton:hover {
+    background-color: #218838;
+}
+
+.cancelButton {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.cancelButton:hover {
+    background-color: #e0e0e0;
+}

@@ -1,0 +1,22 @@
+.content1Container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  padding: 20px;
+  gap: 50px;
+}
+
+@media (max-width: 780px) {
+  .content1Container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    text-align: center !important;
+  }
+  .contentContainerStyle {
+    max-width: 90vw;
+  }
+}
