@@ -89,8 +89,8 @@ APP_PASSWORD = <your-app-password>
 Run backend
 
 ```bash
-npm run dev
+npm start
 ```
 
-The frontend will be running on `http://localhost:8000`
+The backend will be running on `http://localhost:8000`
 
