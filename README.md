@@ -20,10 +20,6 @@ In today's fast-paced world, the acquisition of new skills is essential for pers
 - `Deployment`: Docker and Docker Compose
 - `Tools`: Google Cloud Console (OAuth), MongoDB Compass, Postman, Docker, Docker Compose, VSCode, Git, GitHub.
 
-## Screenshots
-
-See the screenshots of the project in the screenshots folder.
-
 ## Installation
 
 To run SkillSwap locally, follow these steps:
