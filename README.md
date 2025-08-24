@@ -65,7 +65,7 @@ The frontend will be running on `http://localhost:5173`
 cd ../Backend; npm install
 ```
 
-Create .env file in the frontend and write the following:
+Create .env file in the backend and write the following:
 
 ```env
 PORT = 8000
