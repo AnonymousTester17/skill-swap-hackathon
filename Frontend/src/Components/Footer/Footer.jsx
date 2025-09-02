@@ -2,20 +2,11 @@ import styles from "./Footer.module.css";
 const Footer = () => {
   return (
       <div className={styles.footer}>
-          <div style={{display: "flex"}}>
+          <div className={styles.footerTop}>
             <div className={styles.footerLeft}>
-              <h2
-                style={{
-                  fontFamily: "Archivo Black, sans-serif",
-                  color: "var(--primary-bg)",
-                  fontWeight: 400,
-                  fontSize: "1.7rem",
-                }}
-              >
+              <h2 className={styles.footerTitle}>
                 SKILL SWAP
               </h2>
-              <br />
-              <br />
               <p style={{ color: "var(--secondary-bg)" }}>
                 Free, Open Source decentralized <br />
                 Skills Exchanging Platform
@@ -43,11 +34,11 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-
-          <hr style={{color: "var(--secondary-bg)"}}/>
+          
+          <hr className={styles.line}/>
 
           <div>
-            <div className="text-center" style={{ fontFamily: "Montserrat, sans-serif", color: "white" }}>
+            <div className={styles.copy}>
               Copyright &copy; 2025 SkillSwap. All rights reserved.
             </div>
           </div>

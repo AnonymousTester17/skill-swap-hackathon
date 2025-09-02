@@ -9,7 +9,7 @@ const LoginModal = ({ show, onHide }) => {
   }
 
   const handleGoogleLogin = () => {
-    window.location.href = "/auth/google";
+    window.location.href = `${import.meta.env.VITE_SERVER_URL}/auth/google` || "/auth/google";
 };
 
   return (

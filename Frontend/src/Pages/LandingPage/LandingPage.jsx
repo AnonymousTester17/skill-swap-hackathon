@@ -8,6 +8,7 @@ import Footer from "../../Components/Footer/Footer"; // Import Footer
 
 const LandingPage = ({ showLogin, setShowLogin }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 425);
   const location = useLocation();
 
   useEffect(() => {
@@ -15,10 +16,16 @@ const LandingPage = ({ showLogin, setShowLogin }) => {
       setScrollPosition(window.scrollY);
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 425);
+    };
+
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -31,67 +38,24 @@ const LandingPage = ({ showLogin, setShowLogin }) => {
     }
   }, [location]);
 
-  const containerStyle = {
-    padding: "0 50px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: "white",
-    overflowX: "hidden",
-  };
-
-  const fullScreenContainer = {
-    height: "70vh",
-    display: "flex",
-    position: "relative",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    marginTop: "10px",
-  };
-
   const titleContainerStyle = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "20px",
+    padding: "20px 20px 0px",
     marginBottom: "10px",
-    marginTop: "150px",
-  };
-
-  const contentTitleStyle = {
-    textAlign: "center",
-    color: "var(--main)",
-    fontFamily: "Roboto",
-    backgroundColor: "var(--secondary-bg)",
-    width: "100%",
-    fontSize: "3rem",
-    padding: "10px 0",
-    fontWeight: 400,
-    marginTop: "200px",
-  };
-
-  const descriptionStyle = {
-    fontFamily: "Montserrat, sans-serif",
-    fontSize: "1.2rem",
-    textAlign: "center",
-    color: "var(--teritary-text)",
-    padding: "0 80px",
+    // Use a smaller margin on mobile
+    marginTop: isMobile ? "140px" : "150px",
   };
 
   const imageStyle = {
-    position: "absolute",
-    left: `${320 + scrollPosition * 2}px`,
-    top: "0px",
-    width: "250px",
-    justifyContent: "center",
+    // Use different position and scroll multiplier for mobile
+    left: isMobile ? `${120 + scrollPosition * 0.8}px` : `${320 + scrollPosition * 2}px`,
   };
 
   const imageBelowStyle = {
-    position: "absolute",
-    right: `${300 + scrollPosition * 2}px`,
-    width: "250px",
-    justifyContent: "center",
+    // Use different position and scroll multiplier for mobile
+    right: isMobile ? `${110 + scrollPosition * 0.8}px` : `${300 + scrollPosition * 2}px`,
   };
 
   const textContainer = {
@@ -122,27 +86,34 @@ const LandingPage = ({ showLogin, setShowLogin }) => {
     animation:
       ${typing} 3s steps(10, end),
       ${blink} 0.75s step-end infinite;
+
+    // Add media query for responsive font size
+    @media (max-width: 425px) {
+      font-size: 2.5rem;
+      border-right-width: 0.2rem;
+    }
   `;
 
   return (
     <>
       <LoginModal show={showLogin} onHide={() => setShowLogin(false)} />
-      <div style={containerStyle}>
-        <div style={fullScreenContainer}>
+      <div className={styles.containerStyle}>
+        <div className={styles.fullScreenContainer}>
           <div style={{ boxSizing: "border-box" }}>
-            <img src="/assets/images/ml.png" alt="ml" width="270px" height="270px" style={{ position: "absolute", left: 0 }} />
-            <img src={"/assets/images/1.png"} alt="Above Image" style={imageStyle} />
+            <img src="/assets/images/ml.png" alt="ml" className={styles.mlImg} />
+            <img src={"/assets/images/1.png"} alt="Above Image" className={styles.imageStyle} style={imageStyle} />
             <div style={titleContainerStyle}>
               <AnimatedTitle>SKILL SWAP</AnimatedTitle>
             </div>
-            <img src={"/assets/images/2.png"} alt="Below Image" style={imageBelowStyle} />
-            <img src="/assets/images/web.png" alt="web" width="250px" height="350px" style={{ position: "absolute", right: 0, bottom: "-150px" }} />
+            <img src={"/assets/images/2.png"} alt="Below Image" className={styles.imageBelowStyle} style={imageBelowStyle} />
+            <img src="/assets/images/web.png" alt="web" className={styles.webImg} />
           </div>
         </div>
 
-        <h2 id="why-skill-swap" style={contentTitleStyle}>WHY SKILL SWAP?</h2>
-        <div  style={textContainer}>
-          <div style={descriptionStyle}>
+        <h2 id="why-skill-swap" className={styles.contentTitleStyle}>WHY SKILL SWAP?</h2>
+        <div style={textContainer}>
+          <div className={styles.descriptionStyle}>
+            {/* The rest of your JSX remains the same */}
             <br />
             <br />
             <div className={styles.LPCard}>

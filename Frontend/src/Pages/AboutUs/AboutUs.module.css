@@ -1,11 +1,48 @@
+.aboutContainer {
+  background-color: var(--secondary-bg);
+  width: 100%;
+  padding: 50px;
+  border-radius: 20px;
+  margin-bottom: 100px;
+}
+
+.titleStyle {
+  font-family: "Roboto";
+  color: var(--main);
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .content1Container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
   padding: 20px;
   gap: 50px;
+}
+
+.imageContainerStyle {
+  width: 45%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  border-radius: 20px;
+}
+
+.descriptionStyle {
+  font-family: "Montserrat";
+  color: var(--teritary-text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contentContainerStyle {
+  max-width: 50vw;
 }
 
 @media (max-width: 780px) {
@@ -18,5 +55,29 @@
   }
   .contentContainerStyle {
     max-width: 90vw;
+  }
+}
+
+@media (max-width: 425px) {
+  .aboutContainer {
+    padding: 20px;
+  }
+  .content1Container {
+    padding: 0px;
+  gap: 10px;
+  }
+  .titleStyle {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .imageContainerStyle {
+    width: 100%;
+    height: auto;
+    margin-top: 0px;
+  border-radius: 10px;
+  }
+  .descriptionStyle {
+    font-size: 0.8rem;
+    line-height: 1.6;
   }
 }

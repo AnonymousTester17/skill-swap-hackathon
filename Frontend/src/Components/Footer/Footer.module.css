@@ -1,33 +1,106 @@
 .footer {
-    background-color: var(--dark-bg);
-    padding: 70px 50px 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  background-color: var(--dark-bg);
+  padding: 70px 50px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
+
+.footerTop {
+  display: flex;
+}
+
 .footerLeft {
-    width: 45%;
+  width: 45%;
+}
+
+.footerTitle {
+  font-family: "Archivo Black";
+  color: var(--primary-bg);
+  font-weight: 400;
+  font-size: 1.7rem;
+  margin-bottom: 1.5rem;
 }
 
 .footerRight {
-    width: 55%;
-    display: flex;
-    justify-content: space-around;
-
+  width: 55%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .list {
-    list-style-type: none;
-    font-family: "Roboto";
-    color: var(--secondary-bg);
+  list-style-type: none;
+  font-family: "Roboto";
+  color: var(--secondary-bg);
 }
 .list > li {
-    cursor: pointer;
-    margin-bottom: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 .footerHeading {
-    color: var(--primary-bg);
-    font-weight: bold;
-    font-size: 1.5rem;
+  color: var(--primary-bg);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.line {
+  color: var(--secondary-bg);
+}
+.copy {
+  font-family: "Montserrat";
+  color: white;
+  text-align: center;
+}
 
+@media (max-width: 425px) {
+  .footer {
+    display: flex;
+    padding: 50px 25px 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    font-size: 0.8rem;
+  }
+  .footerTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+  .footerLeft {
+    width: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .footerTitle {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+  }
+  .footerRight {
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .list {
+    text-align: center;
+    padding-right: 2rem;
+  }
+  .list > li {
+    margin-bottom: 5px;
+  }
+  .footerHeading {
+    font-size: 1rem;
+  }
+  .line {
+    font-size: larger;
+    color: var(--secondary-bg);
+    opacity: 1;
+  }
+  .copy {
+    font-size: small;
+  }
 }

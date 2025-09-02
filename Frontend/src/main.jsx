@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import { UserContextProvider } from "./util/UserContext.jsx";
 
-axios.defaults.baseURL = "/";
+// axios.defaults.baseURL = "/";
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(

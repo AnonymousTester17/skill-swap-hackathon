@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -63,12 +63,28 @@ const UserProfileDropdown = () => {
 
 const Header = ({ setShowLogin }) => {
   const { user } = useUser();
+  const [expanded, setExpanded] = useState(false);
 
+  const handleCloseOffcanvas = () => {
+    setTimeout(() => {
+      setExpanded(false);
+    }, 150); // A 150ms delay is usually enough and barely noticeable
+  };
   return (
     <>
-      <Navbar key="md" expand="md" style={{ boxShadow: "0 4px 8px var(--secondary-bg)", zIndex: 998, padding: "20px 25px" }}>
+      <Navbar
+        key="md"
+        expand="md"
+        expanded={expanded}
+        onToggle={(isExpanded) => setExpanded(isExpanded)}
+        className={styles.navbar}
+      >
         <Container fluid>
-          <Navbar.Brand as={Link} to="/" style={{ fontFamily: "Archivo Black, sans-serif", color: "var(--main)", fontWeight: 400 }}>
+          <Navbar.Brand
+            as={Link}
+            to="/"
+            style={{ fontFamily: "Archivo Black, sans-serif", color: "var(--main)", fontWeight: 400 }}
+          >
             SKILL SWAP
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
@@ -78,31 +94,34 @@ const Header = ({ setShowLogin }) => {
             placement="end"
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`} style={{ fontFamily: "Josefin Sans, sans-serif", color: "#028477" }}>
+              <Offcanvas.Title
+                id={`offcanvasNavbarLabel-expand-md`}
+                style={{ fontFamily: "Archivo Black, sans-serif", color: "var(--main)", fontWeight: 400 }}
+              >
                 SKILL SWAP
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className={`${styles.navContainer} justify-content-end flex-grow-1 pe-3 align-items-center`}>
+              <Nav className={`${styles.navContainer} justify-content-end flex-grow-1 align-items-center`}>
                 <div className={`${styles.navLinks} d-flex`}>
-                  <Nav.Link as={Link} to="/" className={styles.navLink}>
+                  <Nav.Link as={Link} to="/" className={styles.navLink} onClick={handleCloseOffcanvas}>
                     Home
                   </Nav.Link>
                   {user ? (
                     <>
-                      <Nav.Link as={Link} to="/discover" className={styles.navLink}>
+                      <Nav.Link as={Link} to="/discover" className={styles.navLink} onClick={handleCloseOffcanvas}>
                         Discover
                       </Nav.Link>
-                      <Nav.Link as={Link} to="/chats" className={styles.navLink}>
+                      <Nav.Link as={Link} to="/chats" className={styles.navLink} onClick={handleCloseOffcanvas}>
                         Your Chats
                       </Nav.Link>
                     </>
                   ) : (
                     <>
-                      <Nav.Link as={Link} to="/#why-skill-swap" className={styles.navLink}>
+                      <Nav.Link href="/#why-skill-swap" className={styles.navLink} onClick={handleCloseOffcanvas}>
                         Why SkillSwap
                       </Nav.Link>
-                      <Nav.Link as={Link} to="/#about-us" className={styles.navLink}>
+                      <Nav.Link href="/#about-us" className={styles.navLink} onClick={handleCloseOffcanvas}>
                         About Us
                       </Nav.Link>
                     </>
@@ -112,7 +131,10 @@ const Header = ({ setShowLogin }) => {
                   <UserProfileDropdown />
                 ) : (
                   <Nav.Link
-                    onClick={() => setShowLogin(true)}
+                    onClick={() => {
+                      setShowLogin(true);
+                      handleCloseOffcanvas();
+                    }}
                     className={styles.loginRegisterLink}
                     style={{
                       backgroundColor: "var(--main)",

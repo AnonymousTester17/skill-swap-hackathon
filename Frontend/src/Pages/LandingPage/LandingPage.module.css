@@ -1,3 +1,70 @@
+.containerStyle {
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  overflow-x: hidden;
+}
+
+.fullScreenContainer {
+  height: 70vh;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.imageStyle {
+  position: absolute;
+  top: 0px;
+  width: 250px;
+  justify-content: center;
+}
+
+.mlImg {
+  width: 270px;
+  height: 270px;
+  position: absolute;
+  left: 0;
+}
+
+.webImg {
+  width: 250px;
+  height: 350px;
+  position: absolute;
+  right: 0;
+  bottom: -150px;
+}
+
+.imageBelowStyle {
+  position: absolute;
+  width: 250px;
+  justify-content: center;
+}
+
+.descriptionStyle {
+  font-family: "Montserrat";
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--teritary-text);
+  padding: 0 80px;
+}
+
+.contentTitleStyle {
+  text-align: center;
+  color: var(--main);
+  font-family: "Roboto";
+  background-color: var(--secondary-bg);
+  width: 100%;
+  font-size: 3rem;
+  padding: 10px 0;
+  font-weight: 400;
+  margin-top: 200px;
+}
+
 .LPCard:nth-child(odd) {
   display: flex;
   gap: 20px;
@@ -28,8 +95,8 @@
 }
 
 .LPHeading {
-    color: var(--main);
-    font-family: "Roboto";
+  color: var(--main);
+  font-family: "Roboto";
 }
 
 .LPText {
@@ -58,5 +125,64 @@
 
   .LPText {
     padding-left: 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .containerStyle {
+    padding: 0 15px;
+  }
+  .descriptionStyle {
+    padding: 0 10px;
+  }
+  .contentTitleStyle {
+    font-size: 1.3rem; /* Increased size slightly for better visibility */
+    font-weight: bold;
+    margin-top: 80px; /* Reduced margin */
+  }
+
+  /* --- ADDED/MODIFIED STYLES FOR MOBILE ANIMATION --- */
+  .fullScreenContainer {
+    height: 60vh; /* Adjusted height for mobile */
+  }
+
+  .imageStyle {
+    width: 130px;
+    top: 20px;
+  }
+
+  .imageBelowStyle {
+    width: 130px;
+    bottom: -20px;
+  }
+
+  .mlImg {
+    width: 140px;
+    height: 140px;
+    left: -20px;
+  }
+
+  .webImg {
+    width: 130px;
+    height: 180px;
+    right: -20px;
+    bottom: -90px;
+  }
+  /* --- END OF ADDED/MODIFIED STYLES --- */
+
+  .LPImg {
+    width: 70%;
+    height: auto;
+  }
+  .LPContent {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .LPHeading {
+    font-size: 0.9rem;
+  }
+  .LPText {
+    font-size: 0.8rem;
   }
 }

@@ -1,3 +1,11 @@
+.navbar {
+  box-shadow: 0 4px 8px var(--secondary-bg);
+  z-index: 998;
+  padding: 20px 25px;
+  /* Adding a transition for a smoother height change */
+  transition: padding 0.3s ease-in-out;
+}
+
 /* Original style for nav link font */
 .navLinks > .nav-link {
   font-family: "Roboto", sans-serif;
@@ -38,7 +46,6 @@
   width: 100%;
 }
 
-
 /* 2. Scale Transition for Login/Register Link */
 .loginRegisterLink {
   display: inline-block;
@@ -61,4 +68,44 @@
 .userDropdownMenu :global(.dropdown-item:active) {
   background-color: var(--secondary-bg);
   color: var(--secondary-text);
+}
+
+/* --- ✨ Styles for Mobile View --- */
+@media (max-width: 425px) {
+  .navbar {
+    padding: 10px 15px; /* Reduced padding for smaller screens */
+  }
+  .navbar :global(.offcanvas) {
+    width: 70% !important; /* Set the width of the offcanvas menu */
+  }
+  .navLinks {
+    width: 100%;
+    flex-direction: column;
+    /* This is the change that centers the links */
+    align-items: center;
+    gap: 10px; /* Adjusted gap slightly for vertical view */
+  }
+  /*
+  * 2. STYLES FOR THE INDIVIDUAL LINKS
+  */
+
+  /* Remove the desktop underline effect on mobile */
+  .navLinks > :global(.nav-link)::after {
+    display: none;
+  }
+
+  /* Style the links themselves for a better hover area */
+  .navLinks > :global(.nav-link) {
+    width: 100%; /* Make the link take up space for a larger hover area */
+    text-align: center; /* Ensures text inside is centered */
+    border-radius: 8px;
+    font-family: "Roboto", sans-serif;
+    color: var(--secondary-text);
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  /* Add the new hover effect */
+  .navLinks > :global(.nav-link):hover {
+    background-color: var(--secondary-bg);
+  }
 }
