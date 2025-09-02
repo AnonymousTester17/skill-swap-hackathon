@@ -65,11 +65,27 @@ const Header = ({ setShowLogin }) => {
   const { user } = useUser();
   const [expanded, setExpanded] = useState(false);
 
+  // A simple function to close the canvas for links that don't scroll
   const handleCloseOffcanvas = () => {
-    setTimeout(() => {
-      setExpanded(false);
-    }, 150); // A 150ms delay is usually enough and barely noticeable
+    setExpanded(false);
   };
+  
+  // The new, robust scroll handler
+  const handleScrollAndClose = (e, sectionId) => {
+    e.preventDefault(); // Stop the link from trying to navigate
+    
+    // 1. Close the off-canvas menu immediately.
+    setExpanded(false);
+
+    // 2. Use a tiny delay to ensure the menu is closed and the DOM is stable BEFORE scrolling.
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 300); // A 0ms timeout waits for the next "tick" in the event loop.
+  };
+
   return (
     <>
       <Navbar
@@ -118,10 +134,19 @@ const Header = ({ setShowLogin }) => {
                     </>
                   ) : (
                     <>
-                      <Nav.Link href="/#why-skill-swap" className={styles.navLink} onClick={handleCloseOffcanvas}>
+                      {/* MODIFIED LINKS USING THE NEW HANDLER */}
+                      <Nav.Link
+                        href="#why-skill-swap"
+                        className={styles.navLink}
+                        onClick={(e) => handleScrollAndClose(e, "why-skill-swap")}
+                      >
                         Why SkillSwap
                       </Nav.Link>
-                      <Nav.Link href="/#about-us" className={styles.navLink} onClick={handleCloseOffcanvas}>
+                      <Nav.Link
+                        href="#about-us"
+                        className={styles.navLink}
+                        onClick={(e) => handleScrollAndClose(e, "about-us")}
+                      >
                         About Us
                       </Nav.Link>
                     </>
