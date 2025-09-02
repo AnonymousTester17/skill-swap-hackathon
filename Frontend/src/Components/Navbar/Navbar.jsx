@@ -64,26 +64,23 @@ const UserProfileDropdown = () => {
 const Header = ({ setShowLogin }) => {
   const { user } = useUser();
   const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate(); // Add the useNavigate hook
 
   // A simple function to close the canvas for links that don't scroll
   const handleCloseOffcanvas = () => {
     setExpanded(false);
   };
   
-  // The new, robust scroll handler
-  const handleScrollAndClose = (e, sectionId) => {
-    e.preventDefault(); // Stop the link from trying to navigate
-    
-    // 1. Close the off-canvas menu immediately.
-    setExpanded(false);
+  // This function will handle closing the menu and navigating
+  const handleLinkClick = (e, hash) => {
+    e.preventDefault(); // Stop the default link behavior to prevent the jump
+    setExpanded(false); // Close the off-canvas menu immediately
 
-    // 2. Use a tiny delay to ensure the menu is closed and the DOM is stable BEFORE scrolling.
+    // Use a short delay to allow the menu to close before navigating.
+    // This ensures the scroll behavior is smooth.
     setTimeout(() => {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 300); // A 0ms timeout waits for the next "tick" in the event loop.
+      navigate(`/${hash}`); // Update the URL. This will trigger the scroll effect in LandingPage.jsx
+    }, 300);
   };
 
   return (
@@ -136,16 +133,16 @@ const Header = ({ setShowLogin }) => {
                     <>
                       {/* MODIFIED LINKS USING THE NEW HANDLER */}
                       <Nav.Link
-                        href="#why-skill-swap"
+                        href="/#why-skill-swap"
                         className={styles.navLink}
-                        onClick={(e) => handleScrollAndClose(e, "why-skill-swap")}
+                        onClick={(e) => handleLinkClick(e, "#why-skill-swap")}
                       >
                         Why SkillSwap
                       </Nav.Link>
                       <Nav.Link
-                        href="#about-us"
+                        href="/#about-us"
                         className={styles.navLink}
-                        onClick={(e) => handleScrollAndClose(e, "about-us")}
+                        onClick={(e) => handleLinkClick(e, "#about-us")}
                       >
                         About Us
                       </Nav.Link>
