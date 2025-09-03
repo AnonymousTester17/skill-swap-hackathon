@@ -10,7 +10,7 @@ const LoginModal = ({ show, onHide }) => {
 
   const handleGoogleLogin = () => {
     window.location.href = `${import.meta.env.VITE_SERVER_URL}/auth/google` || "/auth/google";
-};
+  };
 
   return (
     <div className={styles.modalOverlay} onClick={onHide}>
@@ -19,7 +19,9 @@ const LoginModal = ({ show, onHide }) => {
           <FaTimes />
         </button>
         <h1>LOGIN</h1>
-        <MdOutlineSecurity size={50} />
+        <div className={styles.security}>
+          <MdOutlineSecurity />
+        </div>
         <button className={styles.googleButton} onClick={handleGoogleLogin}>
           <FaGoogle style={{ marginRight: "10px" }} /> Login with Google
         </button>

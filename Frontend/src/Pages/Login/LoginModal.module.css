@@ -34,6 +34,10 @@
   font-size: 2rem;
 }
 
+.security svg{
+  font-size: 50px;
+}
+
 .googleButton {
   display: flex;
   align-items: center;
@@ -62,4 +66,22 @@
   font-size: 1.2rem;
   cursor: pointer;
   line-height: 1;
+}
+
+@media (max-width: 425px) {
+  .modalContent {
+    width: 70%;
+    padding: 20px;
+    height: auto;
+  }
+  .modalContent h1 {
+  font-size: 1.5rem;
+}
+.googleButton {
+  padding: 8px 10px;
+}
+.security svg{
+  font-size: 25px;
+  margin-bottom: 8px;
+}
 }

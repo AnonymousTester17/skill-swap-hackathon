@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../util/UserContext";
 import axios from "axios";
 
-const UserProfileDropdown = () => {
+const UserProfileDropdown = ({handleCloseOffcanvas}) => {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
 
@@ -54,7 +54,7 @@ const UserProfileDropdown = () => {
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components" />
       <Dropdown.Menu className={styles.userDropdownMenu}>
-        <Dropdown.Item onClick={() => navigate(`/profile/${user.username}`)}>Profile</Dropdown.Item>
+        <Dropdown.Item onClick={() => {navigate(`/profile/${user.username}`); handleCloseOffcanvas;}}>Profile</Dropdown.Item>
         <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
