@@ -169,6 +169,9 @@
 }
 
 @media (max-width: 780px) {
+  .containerOverall {
+    height: 100vh;
+  }
   .chatContainer {
     flex-direction: column;
   }
@@ -195,5 +198,15 @@
   .chatButton, .requestButton {
     padding: 10px 0;
     font-size: 0.9rem;
+  }
+  .tabs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  .chatLeft {
+    padding-top: 50px; /* Adjust this value based on the height of your tabs */
   }
 }

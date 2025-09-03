@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
 import Discover from "./Pages/Discover/Discover";
@@ -20,15 +20,26 @@ import { Spinner } from "react-bootstrap";
 const AppLayout = () => {
   const location = useLocation();
   const [showLogin, setShowLogin] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 780);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Routes that should not have a footer
   const noFooterRoutes = ["/chats", "/discover", "/edit_profile", "/register"];
   const shouldShowFooter = !noFooterRoutes.some(path => location.pathname.startsWith(path));
+  const showHeader = !(isMobile && location.pathname.startsWith("/chats"));
 
   return (
     <>
-      <Header setShowLogin={setShowLogin} />
-      <main style={{ minHeight: "calc(100vh - 80px)" }}>
+      {showHeader && <Header setShowLogin={setShowLogin} />}
+      <main style={{ minHeight: showHeader ? "calc(100vh - 80px)" : "100vh" }}>
         <Routes>
           <Route
             path="/"
