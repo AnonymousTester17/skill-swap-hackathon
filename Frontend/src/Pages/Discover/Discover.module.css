@@ -90,7 +90,38 @@
   }
 
   .navBar {
-    display: none;
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* For momentum scrolling on iOS */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    box-shadow: none;
+    padding: 5px 0;
+  }
+
+  .navBar::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+  }
+
+  .navBar > ul {
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px;
+    margin: 0;
+    width: max-content;
+  }
+
+  .navLink {
+    white-space: nowrap;
+    margin: 0 5px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .navIcon {
+    margin-right: 8px;
+    font-size: 1rem;
   }
 
   .contentContainer {
@@ -113,5 +144,12 @@
 @media (max-width: 425px) {
   .discoverHeading {
     font-size: 1.2rem;
+  }
+  .navLink {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  .navIcon {
+    font-size: 0.9rem;
   }
 }

@@ -292,14 +292,11 @@ const Chats = () => {
         <div className={styles.chatLeft}>
           {/* Tabs */}
           <div className={styles.tabs}>
-            <button
-              className="chatButton"
+            <button 
+              className={styles.chatButton}
               style={{
-                border: "none",
                 backgroundColor: showChatHistory ? "var(--secondary-bg)" : "var(--primary-bg)",
                 color: showChatHistory ? "var(--secondary-text)" : "var(--teritary-text)",
-                padding: "16px 0",
-                flex: "1",
               }}
               onClick={() => handleTabClick("chat")}
             >
@@ -307,13 +304,10 @@ const Chats = () => {
             </button>
 
             <button
-              className="requestButton"
+              className={styles.requestButton}
               style={{
-                border: "none",
                 backgroundColor: showChatHistory ? "var(--primary-bg)" : "var(--secondary-bg)",
                 color: showChatHistory ? "var(--teritary-text)" : "var(--secondary-text)",
-                padding: "16px 0",
-                flex: "1",
               }}
               onClick={() => handleTabClick("requests")}
             >

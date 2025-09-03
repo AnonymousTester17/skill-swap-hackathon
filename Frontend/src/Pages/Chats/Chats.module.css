@@ -46,6 +46,13 @@
   padding: 10px 50px;
   border-bottom: 2px solid var(--secondary-bg);
 }
+
+.chatButton, .requestButton {
+  border: none;
+  padding: 16px 0;
+  flex: 1;
+}
+
 .videocallBtn {
   border: 1px solid var(--main);
   background-color: transparent;
@@ -181,5 +188,12 @@
   }
   .scheduleModalContent {
     min-width: 90%;
+  }
+}
+
+@media (max-width: 425px) {
+  .chatButton, .requestButton {
+    padding: 10px 0;
+    font-size: 0.9rem;
   }
 }

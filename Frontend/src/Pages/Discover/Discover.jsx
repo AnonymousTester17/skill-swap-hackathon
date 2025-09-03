@@ -17,6 +17,19 @@ const Discover = () => {
   const [mlUsers, setMlUsers] = useState([]);
   const [otherUsers, setOtherUsers] = useState([]);
   const [activeFilter, setActiveFilter] = useState("for-you");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const getDiscoverUsers = async () => {
@@ -73,7 +86,7 @@ const Discover = () => {
     <div className={styles.discoverPage}>
       <div className={styles.contentContainer}>
         <div className={styles.navBar}>
-          <ul defaultActiveKey="/home" className="flex-column" style={{ listStyleType: "none", paddingLeft: "0px" }}>
+          <ul defaultActiveKey="/home" className={!isMobile ? "flex-column" : ""} style={{ listStyleType: "none", paddingLeft: "0px" }}>
             <li
               onClick={() => setActiveFilter("for-you")}
               className={`${styles.navLink} ${activeFilter === "for-you" ? styles.activeLink : ""}`}
