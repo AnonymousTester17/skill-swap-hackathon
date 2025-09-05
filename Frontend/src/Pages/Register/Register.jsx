@@ -408,27 +408,17 @@ const Register = () => {
     }
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <div className="register_page1">
-      <h1 className="m-4" style={{ fontFamily: "Roboto", color: "var(--teritary-text)", fontSize: "1.5rem", fontWeight: "bold"}}>
+      <h1
+        className="m-4"
+        style={{ fontFamily: "Roboto", color: "var(--teritary-text)", fontSize: "1.5rem", fontWeight: "bold" }}
+      >
         Registration Form
       </h1>
       {loading ? (
         <div className="row m-auto w-100 d-flex justify-content-center align-items-center" style={{ height: "80.8vh" }}>
-          <Spinner animation="border" style={{ color: "var(--main)" }}/>
+          <Spinner animation="border" style={{ color: "var(--main)" }} />
         </div>
       ) : (
         <div className="register_section1 mb-3">
@@ -439,99 +429,70 @@ const Register = () => {
             activeKey={activeKey}
             onSelect={(k) => setActiveKey(k)}
           >
-            <Tab eventKey="registration" title="Registration" style={{padding: "0 20px"}}>
+            <Tab eventKey="registration" title="Registration" style={{ padding: "0 20px" }}>
               {/* Name */}
               <div>
-                <label  >Name</label>
+                <label>Name</label>
                 <br />
-                <input
-                  type="text"
-                  name="username"
-                  onChange={handleInputChange}
-                  value={form.name}
-                  disabled
-                />
+                <input type="text" name="username" onChange={handleInputChange} value={form.name} disabled />
               </div>
               {/* Email */}
               <div>
-                <label className="mt-3"  >
-                  Email
-                </label>
+                <label className="mt-3">Email</label>
                 <br />
-                <input
-                  type="text"
-                  name="username"
-                  onChange={handleInputChange}
-                   
-                  value={form.email}
-                  disabled
-                />
+                <input type="text" name="username" onChange={handleInputChange} value={form.email} disabled />
               </div>
               {/* Username */}
               <div>
-                <label className="mt-3"  >
-                  Username
-                </label>
+                <label className="mt-3">Username</label>
                 <br />
                 <input
                   type="text"
                   name="username"
                   onChange={handleInputChange}
                   value={form.username}
-                   
                   placeholder="Enter your username"
                 />
               </div>
               {/* Linkedin Profile Link*/}
               <div>
-                <label className="mt-3"  >
-                  Linkedin Link
-                </label>
+                <label className="mt-3">Linkedin Link</label>
                 <br />
                 <input
                   type="text"
                   name="linkedinLink"
                   value={form.linkedinLink}
                   onChange={handleInputChange}
-                   
                   placeholder="Enter your Linkedin link"
                 />
               </div>
               {/* Github Profile Link*/}
               <div>
-                <label className="mt-3"  >
-                  Github Link
-                </label>
+                <label className="mt-3">Github Link</label>
                 <br />
                 <input
                   type="text"
                   name="githubLink"
                   value={form.githubLink}
                   onChange={handleInputChange}
-                   
                   placeholder="Enter your Github link"
                 />
               </div>
               {/* Portfolio Link */}
               <div>
-                <label className="mt-3"  >
-                  Portfolio Link
-                </label>
+                <label className="mt-3">Portfolio Link</label>
                 <br />
                 <input
                   type="text"
                   name="portfolioLink"
                   value={form.portfolioLink}
                   onChange={handleInputChange}
-                   
                   placeholder="Enter your portfolio link"
                 />
               </div>
               {/* Skills Proficient At */}
               <div>
-                <label className="mt-3"  >
-                  Skills Proficient At
-                </label>
+                <label className="mt-3">Skills Proficient At</label>
                 <br />
                 <Form.Select
                   aria-label="Default select example"
@@ -597,7 +558,7 @@ const Register = () => {
               </div>
               <div className="row m-auto d-flex justify-content-center mt-3">
                 <button className="btn btn-warning" onClick={handleSaveRegistration} disabled={saveLoading}>
-                  {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }}/> : "Save"}
+                  {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }} /> : "Save"}
                 </button>
                 <button onClick={handleNext} className="mt-2 btn btn-primary">
                   Next
@@ -605,7 +566,7 @@ const Register = () => {
               </div>
             </Tab>
 
-            <Tab eventKey="education" title="Education" style={{padding: "0 20px"}}>
+            <Tab eventKey="education" title="Education" style={{ padding: "0 20px" }}>
               {form.education.map((edu, index) => (
                 <div className=" p-3 m-1" key={edu.id}>
                   {index !== 0 && (
@@ -615,45 +576,36 @@ const Register = () => {
                       </button>
                     </span>
                   )}
-                  <label  >Institution Name</label>
+                  <label>Institution Name</label>
                   <br />
                   <input
                     type="text"
                     name="institution"
                     value={edu.institution}
                     onChange={(e) => handleEducationChange(e, index)}
-                     
                     placeholder="Enter your institution name"
                   />
-                  <label className="mt-2"  >
-                    Degree
-                  </label>
+                  <label className="mt-2">Degree</label>
                   <br />
                   <input
                     type="text"
                     name="degree"
                     value={edu.degree}
                     onChange={(e) => handleEducationChange(e, index)}
-                     
                     placeholder="Enter your degree"
                   />
-                  <label className="mt-2"  >
-                    Grade/Percentage
-                  </label>
+                  <label className="mt-2">Grade/Percentage</label>
                   <br />
                   <input
                     type="number"
                     name="score"
                     value={edu.score}
                     onChange={(e) => handleEducationChange(e, index)}
-                     
                     placeholder="Enter your grade/percentage"
                   />
                   <div className="row w-100">
                     <div className="col-md-6">
-                      <label className="mt-2"  >
-                        Start Date
-                      </label>
+                      <label className="mt-2">Start Date</label>
                       <br />
                       <input
                         type="date"
@@ -663,9 +615,7 @@ const Register = () => {
                       />
                     </div>
                     <div className="col-md-6">
-                      <label className="mt-2"  >
-                        End Date
-                      </label>
+                      <label className="mt-2">End Date</label>
                       <br />
                       <input
                         type="date"
@@ -675,16 +625,13 @@ const Register = () => {
                       />
                     </div>
                   </div>
-                  <label className="mt-2"  >
-                    Description
-                  </label>
+                  <label className="mt-2">Description</label>
                   <br />
                   <input
                     type="text"
                     name="description"
                     value={edu.description}
                     onChange={(e) => handleEducationChange(e, index)}
-                     
                     placeholder="Enter your exp or achievements"
                   />
                 </div>
@@ -715,7 +662,7 @@ const Register = () => {
               </div>
               <div className="row m-auto d-flex justify-content-center mt-3">
                 <button className="btn btn-warning" onClick={handleSaveEducation} disabled={saveLoading}>
-                  {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }}/> : "Save"}
+                  {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }} /> : "Save"}
                 </button>
                 <button onClick={handleNext} className="mt-2 btn btn-primary">
                   Next
@@ -723,7 +670,7 @@ const Register = () => {
               </div>
             </Tab>
 
-            <Tab eventKey="longer-tab" title="Additional" style={{padding: "0 20px"}}>
+            <Tab eventKey="longer-tab" title="Additional" style={{ padding: "0 20px" }}>
               <div>
                 <label style={{ marginTop: "20px" }}>Bio (Max 500 Character)</label>
                 <br />
@@ -735,7 +682,7 @@ const Register = () => {
                 ></textarea>
               </div>
               <div className="">
-                <label  >Projects</label>
+                <label>Projects</label>
 
                 {form.projects.map((project, index) => (
                   <div className="border border-dark rounded-1 p-3 m-1" key={project.id}>
@@ -752,7 +699,7 @@ const Register = () => {
                         cross
                       </button>
                     </span>
-                    <label  >Title</label>
+                    <label>Title</label>
                     <br />
                     <input
                       type="text"
@@ -767,9 +714,7 @@ const Register = () => {
                       }}
                       placeholder="Enter your project title"
                     />
-                    <label className="mt-2"  >
-                      Tech Stack
-                    </label>
+                    <label className="mt-2">Tech Stack</label>
                     <br />
                     <Form.Select
                       aria-label="Default select example"
@@ -831,9 +776,7 @@ const Register = () => {
                     </button>
                     <div className="row">
                       <div className="col-md-6">
-                        <label className="mt-2"  >
-                          Start Date
-                        </label>
+                        <label className="mt-2">Start Date</label>
                         <br />
                         <input
                           type="date"
@@ -849,9 +792,7 @@ const Register = () => {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label className="mt-2"  >
-                          End Date
-                        </label>
+                        <label className="mt-2">End Date</label>
                         <br />
                         <input
                           type="date"
@@ -867,9 +808,7 @@ const Register = () => {
                         />
                       </div>
                     </div>
-                    <label className="mt-2"  >
-                      Project Link
-                    </label>
+                    <label className="mt-2">Project Link</label>
                     <br />
                     <input
                       type="text"
@@ -885,9 +824,7 @@ const Register = () => {
                       placeholder="Enter your project link"
                     />
 
-                    <label className="mt-2"  >
-                      Description
-                    </label>
+                    <label className="mt-2">Description</label>
                     <br />
                     <input
                       type="text"
@@ -935,7 +872,7 @@ const Register = () => {
               </div>
               <div className="row m-auto d-flex justify-content-center mt-3">
                 <button className="btn btn-warning" onClick={handleSaveAdditional} disabled={saveLoading}>
-                  {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }}/> : "Save"}
+                  {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }} /> : "Save"}
                 </button>
                 <button onClick={handleNext} className="mt-2 btn btn-primary">
                   Next
@@ -943,10 +880,12 @@ const Register = () => {
               </div>
             </Tab>
 
-            <Tab eventKey="Preview" title="Confirm Details" style={{padding: "0 20px"}}>
+            <Tab eventKey="Preview" title="Confirm Details" style={{ padding: "0 20px" }}>
               <div>
-                
-                <div className="previewForm" style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d", marginBottom: "20px" }}>
+                <div
+                  className="previewForm"
+                  style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d", marginBottom: "20px" }}
+                >
                   <div
                     style={{
                       display: "flex",
@@ -1018,25 +957,12 @@ const Register = () => {
                       width: "70vw",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      flexWrap: "wrap",
-                      marginBottom: "10px",
+                      marginBottom: "1.5rem",
                     }}
                     className="link1"
                   >
                     <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Linkedin Link:</span>
-                    <span
-                      style={{
-                        width: "70vw",
-                        alignItems: "center",
-                        flex: 2,
-                        overflow: "hidden",
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        marginBottom: "1.5rem",
-                      }}
-                    >
-                      {form.linkedinLink || "Yet to be filled"}
-                    </span>
+                    <span style={{flex: 2}}> {form.linkedinLink || "Yet to be filled"}</span>
                   </div>
                   <div
                     style={{
@@ -1048,7 +974,9 @@ const Register = () => {
                     }}
                     className="link1"
                   >
-                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Skills Proficient At:</span>
+                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>
+                      Skills Proficient At:
+                    </span>
                     <span style={{ flex: 2 }}>{form.skillsProficientAt.join(", ") || "Yet to be filled"}</span>
                   </div>
                   <div
@@ -1093,7 +1021,7 @@ const Register = () => {
                     }}
                     className="w-50 d-flex m-auto text-center align-content-center justify-content-center"
                   >
-                    {saveLoading ? <Spinner animation="border" style={{ color: "var(--primary-bg)" }}/> : "Submit"}
+                    {saveLoading ? <Spinner animation="border" style={{ color: "var(--primary-bg)" }} /> : "Submit"}
                   </button>
                 </div>
               </div>

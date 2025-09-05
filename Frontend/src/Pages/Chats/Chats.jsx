@@ -12,7 +12,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Spinner from "react-bootstrap/Spinner";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { FaTimes } from "react-icons/fa"; // Import the close icon
+import { FaTimes, FaArrowLeft } from "react-icons/fa"; // Import the close and back icons
 
 import { toast } from "react-toastify";
 import ScrollableFeed from "react-scrollable-feed";
@@ -42,6 +42,8 @@ const Chats = () => {
   const [selectedRequest, setSelectedRequest] = useState(null);
 
   const { user, setUser } = useUser();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
+  const [isMobileChatSelected, setIsMobileChatSelected] = useState(false);
 
   const navigate = useNavigate();
 
@@ -49,6 +51,18 @@ const Chats = () => {
     date: "",
     time: "",
   });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 780);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     fetchChats();
@@ -123,6 +137,9 @@ const Chats = () => {
       // console.log("Chats: ", chats);
       const chatDetails = chats.find((chat) => chat.id === chatId);
       setSelectedChat(chatDetails);
+      if (isMobile) {
+        setIsMobileChatSelected(true);
+      }
       // console.log("selectedChat", chatDetails);
       // console.log("Data", data.message);
       socket.emit("join chat", chatId);
@@ -270,29 +287,21 @@ const Chats = () => {
     }
   };
 
+  const handleBackToChatList = () => {
+    setIsMobileChatSelected(false);
+    setSelectedChat(null);
+  };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   return (
     <div className={styles.containerOverall}>
       <div className={styles.chatContainer}>
         {/* Left section in Chat Container */}
-        <div className={styles.chatLeft}>
+        <div
+          className={`${styles.chatLeft} ${isMobile && isMobileChatSelected ? styles.hide : ""}`}
+        >
           {/* Tabs */}
           <div className={styles.tabs}>
-            <button 
+            <button
               className={styles.chatButton}
               style={{
                 backgroundColor: showChatHistory ? "var(--secondary-bg)" : "var(--primary-bg)",
@@ -434,11 +443,18 @@ const Chats = () => {
         </div>
 
         {/* Right section in Chat Container */}
-        <div className={styles.chatRight}>
+        <div
+          className={`${styles.chatRight} ${isMobile && !isMobileChatSelected ? styles.hide : ""}`}
+        >
           {/* Profile Bar */}
           {selectedChat && (
             <div className={styles.chatHeader}>
               <div>
+                {isMobile && (
+                  <button className={styles.backButton} onClick={handleBackToChatList}>
+                    <FaArrowLeft />
+                  </button>
+                )}
                 <img
                   src={selectedChat?.picture ? selectedChat.picture : "https://via.placeholder.com/150"}
                   alt="Profile"
@@ -566,21 +582,23 @@ const Chats = () => {
               <FaTimes />
             </button>
             <h3>Request a Meeting</h3>
-            <Form>
-              <Form.Group controlId="formDate" style={{ marginBottom: "20px" }}>
+            <Form className={styles.formContent}>
+              <Form.Group controlId="formDate" className={styles.formGroup}>
                 <Form.Label>Preferred Date</Form.Label>
                 <Form.Control
                   type="date"
                   value={scheduleForm.date}
+                  className={styles.formInput}
                   onChange={(e) => setScheduleForm({ ...scheduleForm, date: e.target.value })}
                 />
               </Form.Group>
 
-              <Form.Group controlId="formTime" style={{ marginBottom: "20px" }}>
+              <Form.Group controlId="formTime" className={styles.formGroup}>
                 <Form.Label>Preferred Time</Form.Label>
                 <Form.Control
                   type="time"
                   value={scheduleForm.time}
+                  className={styles.formInput}
                   onChange={(e) => setScheduleForm({ ...scheduleForm, time: e.target.value })}
                 />
               </Form.Group>
@@ -620,7 +638,7 @@ const Chats = () => {
                   setScheduleModalShow(false);
                 }}
               >
-                Submit
+                Request
               </Button>
               <Button variant="danger" onClick={() => setScheduleModalShow(false)} style={{ marginLeft: "10px" }}>
                 Cancel

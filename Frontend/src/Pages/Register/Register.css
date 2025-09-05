@@ -105,3 +105,26 @@
     margin-left: 0 !important;
   }
 }
+
+@media (max-width: 425px) {
+  .register_section1 .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .register_section1 .nav-tabs .nav-link {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  /* For hiding the scrollbar */
+  .register_section1 .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .register_section1 .nav-tabs {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
